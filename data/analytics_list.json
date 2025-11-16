@@ -1,0 +1,14 @@
+{
+  "quantAnalytics": [
+    {"name": "tentativas_totais", "type": "integer"},
+    {"name": "tempo_total", "type": "integer"},
+    {"name": "desafios_concluidos", "type": "integer"},
+    {"name": "erros_compilacao", "type": "integer"},
+    {"name": "pontuacao_final", "type": "integer"}
+  ],
+  "qualAnalytics": [
+    {"name": "linguagem_utilizada", "type": "text/plain"},
+    {"name": "comentarios_aluno", "type": "text/plain"},
+    {"name": "codigo_ultimo_envio", "type": "text/plain"}
+  ]
+}

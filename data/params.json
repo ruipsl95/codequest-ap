@@ -1,0 +1,7 @@
+[
+  {"name": "linguagem", "type": "text/plain"},
+  {"name": "nivel_dificuldade", "type": "integer"},
+  {"name": "numero_desafios", "type": "integer"},
+  {"name": "tempo_limite", "type": "integer"},
+  {"name": "metodo_avaliacao", "type": "text/plain"}
+]
