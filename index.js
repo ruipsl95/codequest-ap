@@ -40,7 +40,7 @@ app.post('/analytics_url', (req, res) => {
 
 
 app.get('/', (req, res) => {
-    res.send('<h1>O Servidor CodeQuest está a correr! </h1><p>Aceder aqui: <a href="/config_url">/config_url</a></p>');
+    res.send('<h1>O Servidor CodeQuest está a correr! </h1><p>Rotas:</p><p> <a href="/config_url">/config_url</a></p><p> <a href="/json_params_url">/json_params_url</a></p><p> <a href="/analytics_list_url">/analytics_list_url</a></p><p> <a href="/user_url?invenira_activity_id=teste123">/user_url?invenira_activity_id=teste123</a></p><p> <a href="/analytics_url">/analytics_url</a> (POST)</p>');
 });
 
 app.listen(PORT, () => {
