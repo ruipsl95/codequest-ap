@@ -1,4 +1,4 @@
-const PythonFactory = require('../patterns/concrete/PythonFactory');
+const PythonFactory = require('../patterns/implementations/PythonFactory');
 const CFactory = require('../patterns/implementations/CFactory');
 
 class DeployService {
