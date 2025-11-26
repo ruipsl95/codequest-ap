@@ -13,6 +13,7 @@ class DeployController {
                 launchURL: `https://codequest-ap.onrender.com/run?id=${instance_id}`,
                 debug_info: deployResult //Verificação do padrão em funcionamento
             });
+            
 
         } catch (error) {
             res.status(400).json({ error: error.message });

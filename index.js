@@ -24,14 +24,6 @@ app.get('/analytics_list_url', (req, res) => {
 });
 
 
-app.get('/user_url', (req, res) => {
-    const instance_id = req.query.invenira_activity_id || 'default_instance';
-
-    const response = {
-        "launchURL": `https://codequest-ap.onrender.com/codequest_aluno?id=${instance_id}`
-    };
-    res.json(response);
-});
 
 
 app.post('/analytics_url', (req, res) => {
@@ -42,7 +34,7 @@ app.post('/analytics_url', (req, res) => {
 app.get('/user_url', DeployController.handleDeploy);
 
 app.get('/', (req, res) => {
-    res.send('<h1>O Servidor CodeQuest está a correr! </h1><p>Rotas:</p><p> <a href="/config_url">/config_url</a></p><p> <a href="/json_params_url">/json_params_url</a></p><p> <a href="/analytics_list_url">/analytics_list_url</a></p><p> <a href="/user_url?invenira_activity_id=teste123">/user_url?invenira_activity_id=teste123</a></p><p> <a href="/analytics_url">/analytics_url</a> (POST)</p>');
+    res.send('<h1>O Servidor CodeQuest está a correr! </h1><p>Rotas:</p><p> <a href="/config_url">/config_url</a></p><p> <a href="/json_params_url">/json_params_url</a></p><p> <a href="/analytics_list_url">/analytics_list_url</a></p><p> <a href="/user_url?lang=python">/user_url?lang=python (Rota com padrão implementado)</a></p><p> <a href="/analytics_url">/analytics_url</a> (POST)</p>');
 });
 
 app.listen(PORT, () => {
