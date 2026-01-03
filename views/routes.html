@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+    <html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CodeQuest API Server</title>
+        <style>
+            body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f4f6f8; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+            .container { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 600px; width: 100%; }
+            h1 { color: #333; border-bottom: 2px solid #f4f6f8; padding-bottom: 1rem; font-size: 1.5rem; }
+            ul { list-style: none; padding: 0; }
+            li { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
+            li:last-child { border-bottom: none; }
+            .badge { padding: 4px 8px; border-radius: 4px; color: white; font-weight: bold; font-size: 0.75rem; margin-right: 10px; min-width: 40px; text-align: center;}
+            .get { background-color: #10b981; }
+            .post { background-color: #f59e0b; }
+            a { text-decoration: none; color: #2563eb; font-family: monospace; font-size: 1rem; }
+            a:hover { text-decoration: underline; }
+            .desc { font-size: 0.85rem; color: #666; margin-left: auto; }
+            .status-dot { height: 10px; width: 10px; background-color: #10b981; border-radius: 50%; display: inline-block; margin-right: 8px; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1><span class="status-dot"></span>Servidor CodeQuest Online</h1>
+            <p>Lista de Rotas Disponíveis:</p>
+            <ul>
+                <li><span class="badge get">GET</span> <a href="/config_url">/config_url</a></li>
+                <li><span class="badge get">GET</span> <a href="/json_params_url">/json_params_url</a></li>
+                <li><span class="badge get">GET</span> <a href="/analytics_list_url">/analytics_list_url</a></li>
+                <li><span class="badge get">GET</span> <a href="/user_url?lang=python">/user_url?lang=python</a> <span class="desc">Padrão</span></li>
+                <li><span class="badge post">POST</span> <span style="font-family: monospace; color: #555;">/analytics_url</span> <span class="desc">(Via Postman/Code)</span></li>
+                <li><span class="badge get">GET</span> <a href="/deploy?invenira_activity_id=999&lang=python">/deploy?invenira_activity_id=99&lang=python</a> <span class="desc">Adapter</span></li>
+            </ul>
+        </div>
+    </body>
+    </html>

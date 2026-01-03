@@ -4,6 +4,7 @@ const DeployController = require('./src/controllers/DeployController');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
 app.use(express.json());
 
 
@@ -24,17 +25,17 @@ app.get('/analytics_list_url', (req, res) => {
 });
 
 
-
+app.get('/deploy', DeployController.handleDeploy);
 
 app.post('/analytics_url', (req, res) => {
     res.sendFile(path.join(__dirname, 'data/analytics_test.json'));
 });
 
-//Rota que implementa o padrão
-app.get('/user_url', DeployController.handleDeploy);
+//Rota que implementa o padrão de criaç\ão
+app.get('/user_url', DeployController.handleDeploy);    
 
 app.get('/', (req, res) => {
-    res.send('<h1>O Servidor CodeQuest está a correr! </h1><p>Rotas:</p><p> <a href="/config_url">/config_url</a></p><p> <a href="/json_params_url">/json_params_url</a></p><p> <a href="/analytics_list_url">/analytics_list_url</a></p><p> <a href="/user_url?lang=python">/user_url?lang=python (Rota com padrão implementado)</a></p><p> <a href="/analytics_url">/analytics_url</a> (POST)</p>');
+    res.sendFile(path.join(__dirname, 'views/routes.html'));
 });
 
 app.listen(PORT, () => {
