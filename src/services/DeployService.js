@@ -1,34 +1,50 @@
 const PythonFactory = require('../patterns/implementations/PythonFactory');
 const CFactory = require('../patterns/implementations/CFactory');
+const StrictGradingStrategy = require('../patterns/behavioral/strategies/StrictGradingStrategy');
+const PartialGradingStrategy = require('../patterns/behavioral/strategies/PartialGradingStrategy');
 
 class DeployService {
     
-    async orchestrateDeploy(language) {
-        let factory;
-        console.log(`Orquestrando deploy para a linguagem: ${language}`);
-        if (language === 'python') {
-            console.log("[Service] Instanciando PythonFactory...");
-            factory = new PythonFactory();
-        } else if (language === 'c') {
-            console.log("[Service] Instanciando CFactory...");
-            factory = new CFactory();
+    // Recebe o 'metodo_avaliacao' vindo do Adapter
+    async orchestrateDeploy(language, metodoAvaliacao = 'strict') {
+        
+        // 1. SELEÇÃO DA ESTRATÉGIA
+        let strategy;
+
+        if (metodoAvaliacao === 'partial' || metodoAvaliacao === 'parcial') {
+            strategy = new PartialGradingStrategy();
         } else {
-            throw new Error("Linguagem não suportada");
+            strategy = new StrictGradingStrategy();
         }
 
+        // 2. CRIAÇÃO
+        let factory;
+        if (language === 'python') factory = new PythonFactory();
+        else if (language === 'c') factory = new CFactory();
+        else throw new Error("Language not supported");
+
         const compiler = factory.createCompiler();
-        const runner = factory.createTestRunner();
+        
+        // --- SIMULAÇÃO ---
+        const results = { passed: 2, failed: 1, total: 3 };
+
+        // 3. EXECUÇÃO DA ESTRATÉGIA (Cálculo do score final)
+       
+        const finalScore = strategy.calculateScore(results);
 
         return {
-            status: "Ambiente Criado",
-            tools: {
-                compiler: compiler.constructor.name,
-                runner: runner.constructor.name
+            status: "Concluído",
+            analytics: {
+                tentativas_totais: 1,     
+                erros_compilacao: 0,      
+                pontuacao_final: finalScore 
             },
-            test_message: compiler.compile("Hello World") 
+            debug_info: {
+                strategy_used: strategy.constructor.name,
+                raw_results: results
+            }
         };
     }
 }
-
 //Exportação da instância
-module.exports = new DeployService(); 
+module.exports = new DeployService();

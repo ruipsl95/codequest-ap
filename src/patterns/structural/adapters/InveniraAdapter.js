@@ -4,20 +4,22 @@ class InveniraAdapter {
     /**
      * Converte o pedido específico da Inven!RA para o formato do DeployService
      */
-    async processRequest(httpRequest) {
-        console.log("[Adapter] A processar pedido via Inven!RA...");
+    async processRequest(req) {
+        const lang = req.query.lang || 'python';
+        const rawId = req.query.invenira_activity_id || 'def';
+        
+        // Faz a leitura do parâmetro da proposta e se a Inven!RA não enviar, assumimos 'strict'
+        const metodo = req.query.metodo_avaliacao || 'strict';
 
-       
-        const rawId = httpRequest.query.invenira_activity_id || 'default';
-        const safeUserId = "anon_invenira_" + rawId; 
+        console.log(`[Adapter] Configuração recebida: Lang=${lang}, Método=${metodo}`);
 
-        // Extração de parâmetros específicos da Inven!RA
-        const lang = httpRequest.query.lang || 'python';
+        // Passagem para o serviço
+        const result = await deployService.orchestrateDeploy(lang, metodo);
 
-    
-        // O DeployService recebe dados limpos e padronizados
-        return await deployService.orchestrateDeploy(lang);
+        return {
+            launchURL: `https://codequest-ap.onrender.com/run?id=${rawId}`,
+            analytics_data: result.analytics 
+        };
     }
 }
-
 module.exports = new InveniraAdapter();
