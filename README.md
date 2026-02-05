@@ -50,6 +50,7 @@ git clone https://github.com/ruipsl95/codequest-ap
 Instale as dependências (incluindo uuid):
 ```Bash
 npm install
+npm install uuid@8.3.2
 ```
 Execução
 Para iniciar o servidor:
